@@ -22,12 +22,12 @@ function TextForm({ title, mode, showAlert }) {
 
     const handleCopy = () => {
         navigator.clipboard.writeText(text);
-        showAlert("Copied to Clipboard", "success");
+        showAlert("Copied to Clipboard!", "success");
     }
 
     const handleclear = () => {
         settext('')
-        showAlert("text cleared", "success");
+        showAlert("Text cleared", "success");
     }
 
     return (
@@ -49,8 +49,8 @@ function TextForm({ title, mode, showAlert }) {
             </div>
             <div className='container'>
                 <h2>Your text summary...</h2>
-                <p>It contains {text.split(" ").filter(ele => { return ele.length !== 0 }).length} and {text.length} characters</p>
-                <p>You can read it in approximately {(0.008 * text.split(" ").filter(ele => { return ele.length !== 0 }).length)} minutes</p>
+                <p>It contains {text.split((/\s+/)).filter(ele => { return ele.length !== 0 }).length} and {text.length} characters</p>
+                <p>You can read it in approximately {(0.008 * text.split((/\s+/)).filter(ele => { return ele.length !== 0 }).length)} minutes</p>
                 <h2>Preview</h2>
                 <p>{text.length > 0 ? text : "Nothing to preview...."}</p>
             </div>
