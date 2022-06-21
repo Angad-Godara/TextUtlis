@@ -1,14 +1,14 @@
 import './App.css';
 import Navbar from './Components/Navbar';
 import TextForm from './Components/TextForm';
-// import About from './Components/About';
+import About from './Components/About';
 import { useState } from 'react';
 import Alert from './Components/Alert';
-// import {
-//   BrowserRouter,
-//   Routes,
-//   Route,
-// } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 
 function App() {
 
@@ -53,20 +53,14 @@ function App() {
 
   return (
     <div className="App">
-
-      <Navbar mode={mode} changeMode={changeMode} showAlert={showAlert} />
-      <Alert alert={alert} />
-      <TextForm title={"Enter the text to analyze below"} mode={mode} showAlert={showAlert} />
-
-      {/* removing the routing stuff as the github pages don't works with react routers correctly */}
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <Navbar mode={mode} changeMode={changeMode} showAlert={showAlert} />
         <Alert alert={alert} />
         <Routes>
           <Route exact path="/" element={<TextForm title={"Enter the text to analyze below"} mode={mode} showAlert={showAlert} />}></Route>
           <Route exact path="/about" element={<About />}> </Route>
         </Routes>
-      </BrowserRouter> */}
+      </BrowserRouter>
     </div >
   );
 }

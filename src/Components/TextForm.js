@@ -41,18 +41,16 @@ function TextForm({ title, mode, showAlert }) {
                         style={{ backgroundColor: mode === 'dark' ? '#121212' : 'white', color: mode === 'dark' ? 'white' : 'black' }}
                     ></textarea>
                 </div>
-                <div className='d-flex'>
-                    <button type="button" onClick={handleuppercase} className="btn btn-primary mx-3">Convert to Uppercase</button>
-                    <button type="button" onClick={handlelowercase} className="btn btn-primary mx-3">Convert to Lowercase</button>
-                    <button type="button" onClick={handleExtraspaces} className="btn btn-primary mx-3">Remove Extra Spaces</button>
-                    <button type="button" onClick={handleCopy} className="btn btn-success mx-3">Copy Text</button>
-                    <button type="button" onClick={handleclear} className="btn btn-danger mx-3">Clear text</button>
-                </div>
+                <button type="button" onClick={handleuppercase} className="btn btn-primary mx-3 my-3">Convert to Uppercase</button>
+                <button type="button" onClick={handlelowercase} className="btn btn-primary mx-3 my-3">Convert to Lowercase</button>
+                <button type="button" onClick={handleExtraspaces} className="btn btn-primary mx-3 my-3">Remove Extra Spaces</button>
+                <button type="button" onClick={handleCopy} className="btn btn-success mx-3 my-3">Copy Text</button>
+                <button type="button" onClick={handleclear} className="btn btn-danger mx-3 my-3">Clear text</button>
             </div>
             <div className='container'>
                 <h2>Your text summary...</h2>
-                <p>It contains {text.split(" ").length} and {text.length} characters</p>
-                <p>You can read it in approximately {(0.008 * text.split(" ").length)} minutes</p>
+                <p>It contains {text.split(" ").filter(ele => { return ele.length != 0 }).length} and {text.length} characters</p>
+                <p>You can read it in approximately {(0.008 * text.split(" ").filter(ele => { return ele.length != 0 }).length)} minutes</p>
                 <h2>Preview</h2>
                 <p>{text.length > 0 ? text : "Enter something above in the textbox to preview it here...."}</p>
             </div>
