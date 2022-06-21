@@ -1,28 +1,33 @@
 import React, { useState } from 'react'
 
-function TextForm({ title }) {
+function TextForm({ title, mode, showAlert }) {
 
     const [text, settext] = useState('');
 
     const handleuppercase = () => {
         settext(text.toUpperCase())
-    }
+        showAlert("converted to uppercase", "success");
 
+    }
     const handlelowercase = () => {
         settext(text.toLowerCase())
+        showAlert("converted to lowercase", "success");
     }
 
     const handleExtraspaces = () => {
         let newtext = text.split(/[ ] + /); /// --> jhan pr bhi ek ya ek se zyada spaces hongi this logic will spit those elements into an array
         settext(newtext.join(" "));
+        showAlert("extra space removed", "success");
     }
 
     const handleCopy = () => {
         navigator.clipboard.writeText(text);
+        showAlert("text copied", "success");
     }
 
     const handleclear = () => {
         settext('')
+        showAlert("text cleared", "success");
     }
 
     return (
@@ -30,7 +35,11 @@ function TextForm({ title }) {
             <div className='container my-3'>
                 <h2>{title}</h2>
                 <div className="mb-3">
-                    <textarea className="form-control" value={text} placeholder='Enter your text here' id="mybox" rows="8" onChange={e => settext(e.target.value)}></textarea>
+                    <textarea className="form-control" value={text}
+                        placeholder='Enter your text here' id="mybox" rows="8"
+                        onChange={e => settext(e.target.value)}
+                        style={{ backgroundColor: mode === 'dark' ? '#121212' : 'white', color: mode === 'dark' ? 'white' : 'black' }}
+                    ></textarea>
                 </div>
                 <div className='d-flex'>
                     <button type="button" onClick={handleuppercase} className="btn btn-primary mx-3">Convert to Uppercase</button>
@@ -45,7 +54,7 @@ function TextForm({ title }) {
                 <p>It contains {text.split(" ").length} and {text.length} characters</p>
                 <p>You can read it in approximately {(0.008 * text.split(" ").length)} minutes</p>
                 <h2>Preview</h2>
-                <p>{text}</p>
+                <p>{text.length > 0 ? text : "Enter something above in the textbox to preview it here...."}</p>
             </div>
         </>
     )
