@@ -7,8 +7,10 @@ function Alert({ alert }) {
     }
 
     return (
-        alert && <div className={`alert alert-${alert.type} alert-dismissible show" role="alert"t`}>
-            <strong>{capitalize(alert.type)}</strong> {alert.msg}
+        <div style={{ height: '70px', width: '100vw' }}>
+            {alert && <div className={`alert alert-${alert.type} alert-dismissible show" role="alert"t`}>
+                <strong>{capitalize(alert.type)}</strong> {alert.msg}
+            </div>}
         </div>
     )
 }

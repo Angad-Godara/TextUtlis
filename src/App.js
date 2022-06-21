@@ -32,7 +32,7 @@ function App() {
       document.body.style.backgroundColor = "#121212"
       document.body.style.color = "white"
       showAlert("Dark mode is been enabled", "success");
-      document.title = 'TextUtils - Darkmode'
+      // document.title = 'TextUtils - Darkmode'
 
       // chamakane waale titles
       // setInterval(() => {
@@ -47,7 +47,7 @@ function App() {
       document.body.style.backgroundColor = "white"
       document.body.style.color = "black"
       showAlert("Light mode is been enabled", "success");
-      document.title = 'TextUtils - Lightmode'
+      // document.title = 'TextUtils - Lightmode'
     }
   }
 
@@ -58,7 +58,7 @@ function App() {
         <Alert alert={alert} />
         <Routes>
           <Route exact path="/" element={<TextForm title={"Enter the text to analyze below"} mode={mode} showAlert={showAlert} />}></Route>
-          <Route exact path="/about" element={<About />}> </Route>
+          <Route exact path="/about" element={<About mode={mode} />}> </Route>
         </Routes>
       </BrowserRouter>
     </div >
